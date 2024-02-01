@@ -1,10 +1,8 @@
 package edu.wctc.dice;
 
 
-import edu.wctc.dice.impl.ConsoleInput;
-import edu.wctc.dice.impl.ConsoleOutput;
-import edu.wctc.dice.impl.PopupInput;
-import edu.wctc.dice.impl.PopupOutput;
+import edu.wctc.dice.iface.DieRoller;
+import edu.wctc.dice.impl.*;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -16,6 +14,7 @@ import java.util.Random;
 public class DiceGame {
     private PopupInput in;
     private PopupOutput out;
+    private DieRoller dieRoller;
 
     private List<Player> players = new ArrayList<>();
     private int currentRound = 1;
@@ -24,6 +23,7 @@ public class DiceGame {
     public DiceGame() {
         this.in = new PopupInput();
         this.out = new PopupOutput();
+        this.dieRoller = new EightSided();
         System.out.println("DiceGame created");
     }
 
@@ -131,8 +131,6 @@ public class DiceGame {
     }
 
     private int rollDie() {
-        Random random = new Random();
-        return random.nextInt(6) + 1;
-//        return dieRoller.rollDie();
+        return dieRoller.rollDie();
     }
 }
