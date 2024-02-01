@@ -1,6 +1,10 @@
 package edu.wctc.dice;
 
 
+import edu.wctc.dice.impl.ConsoleInput;
+import edu.wctc.dice.impl.ConsoleOutput;
+import edu.wctc.dice.impl.PopupInput;
+import edu.wctc.dice.impl.PopupOutput;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -10,16 +14,16 @@ import java.util.Random;
 
 @Component
 public class DiceGame {
-    private ConsoleInput in;
-    private ConsoleOutput out;
+    private PopupInput in;
+    private PopupOutput out;
 
     private List<Player> players = new ArrayList<>();
     private int currentRound = 1;
 
 
     public DiceGame() {
-        this.in = new ConsoleInput();
-        this.out = new ConsoleOutput();
+        this.in = new PopupInput();
+        this.out = new PopupOutput();
         System.out.println("DiceGame created");
     }
 
